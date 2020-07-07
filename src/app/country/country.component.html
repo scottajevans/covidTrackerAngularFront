@@ -1,0 +1,56 @@
+<body style="margin-left:5%;margin-right:5%;">
+    <div>
+        <div style="width:50%;">
+            <h2>Country: {{ mostRecent.Country }}
+                <button [routerLink]="'/'" style="float: right;"> Home</button>
+            </h2>
+        </div>
+        <div style="width:50%;">
+            <mat-grid-list cols="3" rowHeight="100px">
+                <mat-grid-tile>
+                    <mat-card class="recovered">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Recovered Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ mostRecent.Recovered }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="confirmed">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Confirmed Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ mostRecent.Confirmed }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="fatal">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Fatal Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ mostRecent.Deaths }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+
+        <div>
+            <svg width="900" height="500" id="first"></svg>
+        </div>
+        <div>
+            <svg width="900" height="500" id="second"></svg>
+        </div>
+    </div>
+</body>

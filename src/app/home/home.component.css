@@ -1,0 +1,20 @@
+.mat-card-content {
+    text-align: center;
+}
+
+.recovered {
+    background-color: green;
+}
+
+.confirmed {
+    background-color: #FEC200 ;
+}
+
+.fatal {
+
+}
+
+table {
+    width: 100%;
+}
+

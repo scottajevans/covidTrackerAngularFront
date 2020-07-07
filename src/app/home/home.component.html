@@ -1,0 +1,140 @@
+
+<body style="margin-left:5%;margin-right:5%;">
+    <div>
+        <div style="width:50%;">
+            <mat-grid-list cols="3" rowHeight="100px">
+                <mat-grid-tile>
+                    <mat-card class="recovered">
+                        <mat-card-header>
+                            <mat-card-title>
+                                New Recovered Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.NewRecovered }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="confirmed">
+                        <mat-card-header>
+                            <mat-card-title>
+                                New Confirmed Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.NewConfirmed }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="fatal">
+                        <mat-card-header>
+                            <mat-card-title>
+                                New Fatal Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.NewDeaths }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="recovered">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Total Recovered Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.TotalRecovered }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="confirmed">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Total Confirmed Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.TotalConfirmed }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="fatal">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Total Fatal Cases
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            {{ covidData.Global.TotalDeaths }}
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <!-- <div></div> -->
+    </div>
+
+    <div>
+        <form class="search-form">
+            <mat-form-field class="search-full-width" floatLabel="always">
+              <label>Filter By Country:</label>
+              <input 
+                matInput 
+                onClick="this.setSelectionRange(0, this.value.length)"
+                name="searchString" 
+                [(ngModel)]="searchString"
+                />
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div>
+        <table mat-table [dataSource]="sortedData | filter : 'Country' : searchString" class="mat-elevation-z8" matSort (matSortChange)="sortData($event)" matSortActive="totalConfirmed" matSortDirection="desc">
+            <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="country"> Country </th>
+                <td mat-cell *matCellDef="let el"> {{el.Country}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="newRecovered">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="newRecovered"> New Recovered </th>
+                <td mat-cell *matCellDef="let el"> {{el.NewRecovered}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="newConfirmed">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="newConfirmed"> New Confirmed </th>
+                <td mat-cell *matCellDef="let el"> {{el.NewConfirmed}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="newDeaths">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="newDeaths"> New Fatalities </th>
+                <td mat-cell *matCellDef="let el"> {{el.NewDeaths}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="totalRecovered">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="totalRecovered"> Total Recovered </th>
+                <td mat-cell *matCellDef="let el"> {{el.TotalRecovered}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="totalConfirmed">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="totalConfirmed"> Total Confirmed </th>
+                <td mat-cell *matCellDef="let el"> {{el.TotalConfirmed}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="totalDeaths">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="totalDeaths"> Total Fatalities </th>
+                <td mat-cell *matCellDef="let el"> {{el.TotalDeaths}} </td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="goToPage(row.CountryCode)"></tr>
+        </table>
+    </div>
+    
+</body>

@@ -6,6 +6,8 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -38,6 +40,8 @@ import { HomeComponent } from './home/home.component';
     MatTableModule,
     MatSortModule,
     MatInputModule,
+    MatToolbarModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule
   ],

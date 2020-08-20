@@ -1,8 +1,17 @@
+<mat-toolbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary">
+    <mat-toolbar-row>
+        <h1>Covid Tracker</h1>
+        <span class="menu-spacer"></span>
+
+        <div style="margin-left:30px;">
+            <a mat-button [routerLink]="'/'">Home</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
 <body style="margin-left:5%;margin-right:5%;">
     <div>
         <div style="width:50%;">
             <h2>Country: {{ mostRecent.Country }}
-                <button [routerLink]="'/'" style="float: right;"> Home</button>
             </h2>
         </div>
         <div style="width:50%;">
